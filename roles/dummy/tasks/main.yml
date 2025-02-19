@@ -5,4 +5,4 @@
     state: directory
 
 - name: Execute shell commands on targets
-  ansible.builtin.shell: echo "Message from Jenkins => {{ MESSAGE }}"
+  ansible.builtin.shell: echo "Message from Jenkins => ${MESSAGE}"
