@@ -5,4 +5,7 @@
     state: directory
 
 - name: Write a echo message
-  shell: echo "Message from Jenkins: {{ MESSAGE }}"
+  command:
+  cmd: echo
+  argv:
+    - "Jenkins message => {{ MESSAGE }}"
