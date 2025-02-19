@@ -1,11 +1,11 @@
 ---
 - name: Creates a directory
   file:
-    path: "/tmp/{{ DIRECTORY_NAME }}{{ MESSAGE }}"
+    path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
 - name: Execute shell commands on targets
-  shell: echo "Message from Jenkins: {{ MESSAGE }}"
+  shell: "echo 'Message from Jenkins: {{ MESSAGE }}'"
   register: echo_output
 
 - name: Show message command
