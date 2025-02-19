@@ -11,3 +11,7 @@
 - name: Print version
   debug:
     msg: "Docker Version: {{ dockerVersion.stdout }}"
+
+- name: Write a message
+  debug:
+    msg: "Message from Jenkins: {{ MSG }}"
