@@ -5,4 +5,4 @@
     state: directory
 
 - debug:
-    msg: "{{ ansible --version }}"
+    msg: "{{ MESSAGE }}"
