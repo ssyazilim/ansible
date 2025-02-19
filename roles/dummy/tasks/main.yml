@@ -3,3 +3,7 @@
   file:
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
+
+- name: Write a message to terminal
+  ansible.builtin.debug:
+        msg: "{{ MESSAGE }}"
