@@ -1,9 +1,4 @@
 ---
-- name: Creates a directory
-  file:
-    path: "/tmp/{{ DIRECTORY_NAME }}"
-    state: directory
-
 - name: Check Docker version
   command: docker --version
   register: dockerVersion
@@ -14,7 +9,7 @@
 
 - name: Get info for container
   docker_container_info:
-    name: wordpress-wordpress-1
+    name: "{{ CONTAINER_NAME }}"
   register: result
 
 - name: Does container exist?
