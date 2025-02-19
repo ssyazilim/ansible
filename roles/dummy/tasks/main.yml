@@ -10,4 +10,18 @@
 
 - name: Print version
   debug:
-    msg: "Docker Version: {{ dockerVersion.stdout }} and also you have a message from Jenkins: {{ MSG }}"
+    msg: "Docker Version: {{ dockerVersion.stdout }}"
+
+- name: Get info for container
+  docker_container_info:
+    name: wordpress-wordpress-1
+  register: result
+
+- name: Does container exist?
+  debug:
+    msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
+
+- name: Print the status of the container
+  debug:
+    msg: "The container status is {{ result.container['State']['Status'] }}"
+  when: result.exists
