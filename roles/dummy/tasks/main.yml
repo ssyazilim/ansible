@@ -1,5 +1,5 @@
 ---
 - name: Creates a directory
   file:
-    path: "/tmp/{{ DIRECTORY_NAME }}"
+    path: "/tmp/{{ DOCKER_TAG }}"
     state: directory
