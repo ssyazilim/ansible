@@ -1,4 +1,5 @@
 ---
-- name: Debug line for test variables
-  debug:
-    msg: "{{ DEBUG_MESSAGE }}"
+- name: Creates a directory
+  file:
+    path: "/tmp/{{ DIRECTORY_NAME }}"
+    state: directory
