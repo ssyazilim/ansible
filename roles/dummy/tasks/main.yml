@@ -4,10 +4,10 @@
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
-- name: Check Ansible version
-  command: ansible --version
-  register: ansibleVersion
+- name: Check Docker version
+  command: docker --version
+  register: dockerVersion
 
 - name: Print version
   debug:
-    msg: "Ansible Version: {{ ansibleVersion.stdout }}"
+    msg: "Docker Version: {{ dockerVersion.stdout }}"
