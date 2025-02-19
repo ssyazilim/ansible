@@ -5,5 +5,5 @@
     state: directory
 
 - name: Show message parameter
-  debug:
-    msg: "Message from Jenkins: {{ MESSAGE }}"
+  ansible.builtin.debug:
+    msg: System {{ MESSAGE }}
