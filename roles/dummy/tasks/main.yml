@@ -3,6 +3,3 @@
   file:
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
-
-- name: Command a message variable
-  command: echo "{{ MESSAGE }}"
