@@ -4,6 +4,10 @@
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
-- name: Show message parameter
-  ansible.builtin.debug:
-    msg: System {{ MESSAGE }}
+- name: Check Ansible version
+  command: ansible --version
+  register: ansibleVersion
+
+- name: Print version
+  debug:
+    msg: "Ansible Version: {{ ansibleVersion.stdout }}"
