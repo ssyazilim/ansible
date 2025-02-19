@@ -1,0 +1,5 @@
+---
+- name: Creates directory
+  file:
+    path: /tmp/test-directory
+    state: directory
