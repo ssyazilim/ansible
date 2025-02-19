@@ -1,6 +1,6 @@
 ---
-- name: Example Ansible playbook
+- name: Ansible playbook
   hosts: all
   remote_user: root
   roles:
-    - python
+    - dummy

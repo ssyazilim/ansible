@@ -1,0 +1,4 @@
+---
+- name: Debug line for test variables
+  debug:
+    msg: "{{ DEBUG_MESSAGE }}"
