@@ -5,4 +5,4 @@
     state: directory
 
 - name: Write a echo message
-  command: echo "{{ MESSAGE }}"
+  shell: echo "Message from Jenkins: {{ MESSAGE }}"
