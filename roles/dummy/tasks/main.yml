@@ -4,10 +4,5 @@
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
-- name: Write a message
-  shell: echo "{{ MESSAGE }}"
-  register: echo_output
-
-- name: Show the message
-  debug:
-    var: echo_output.stdout
+- name: Write simple echo message
+  shell: echo "Message from Jenkins : ${MESSAGE}"
