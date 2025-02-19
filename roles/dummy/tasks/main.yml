@@ -4,5 +4,5 @@
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
-- debug:
-    msg: "{{ MESSAGE }}"
+- name: Command a message variable
+  command: echo "{{ MESSAGE }}"
