@@ -4,5 +4,5 @@
     path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
 
-- name: Write simple echo message
-  shell: echo "Message from Jenkins : ${MESSAGE}"
+- name: Execute shell commands on targets
+  ansible.builtin.shell: echo "Selam"
