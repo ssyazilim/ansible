@@ -1,5 +1,8 @@
 ---
 - name: Creates a directory
   file:
-    path: "/tmp/{{ DOCKER_TAG }}"
+    path: "/tmp/{{ DIRECTORY_NAME }}"
     state: directory
+
+- debug:
+    msg: "{{ ansible --version }}"
