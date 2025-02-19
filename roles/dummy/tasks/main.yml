@@ -6,4 +6,4 @@
 
 - name: Write a message to terminal
   ansible.builtin.debug:
-        msg: "{{ MESSAGE }}"
+        msg: "Message from jenkins = {{ MESSAGE }}"
