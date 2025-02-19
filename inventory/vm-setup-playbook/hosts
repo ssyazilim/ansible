@@ -1,2 +1,2 @@
 [default]
-hostinger ansible_host=194.31.52.175 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/59fd94cf2852c8ae13fa68109e024ce5
+194.31.52.175 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/59fd94cf2852c8ae13fa68109e024ce5
