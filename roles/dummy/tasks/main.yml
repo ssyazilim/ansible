@@ -1,8 +1,13 @@
 ---
 - name: Creates a directory
   file:
-    path: "/tmp/{{ DIRECTORY_NAME }}"
+    path: "/tmp/{{ DIRECTORY_NAME }}{{ MESSAGE }}"
     state: directory
 
 - name: Execute shell commands on targets
-  ansible.builtin.shell: echo "Message from Jenkins => ${MESSAGE}"
+  shell: echo "Message from Jenkins: {{ MESSAGE }}"
+  register: echo_output
+
+- name: Show message command
+  debug:
+    var: echo_output.stdout
