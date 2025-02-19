@@ -1,8 +1,5 @@
 ---
 - name: Creates a directory
   file:
-    path: "/tmp/{{ DIRECTORY_NAME }}"
+    path: "/tmp/{{ DIRECTORY_NAME }}{{ MESSAGE }}"
     state: directory
-
-- name: Execute shell commands on targets
-  ansible.builtin.shell: echo "Selam"
