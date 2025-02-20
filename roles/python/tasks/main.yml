@@ -8,9 +8,9 @@
     debug:
       msg: "{{ python_version_result.stdout }} < {{ python_version }} | activePythonVersion < myPythonVersionVariable"
 
-  - name: Update apt cache
+  - name: installing packages for python env
+    become: yes
     apt:
+      name:
+        - python3-pip
       update_cache: yes
-
-  - name: Reinstall Python 3.11, venv and dev packages
-    command: apt-get install --reinstall -y python3.11 python3.11-venv python3.11-dev
