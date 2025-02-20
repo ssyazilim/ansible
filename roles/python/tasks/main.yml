@@ -1,4 +1,9 @@
 ---
-  - name: String Variable from - python_version
+  - name: Check if Python is already latest
+    command: python3 --version
+    register: python_version_result
+    # failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+
+  - name: Print Python version
     debug:
-      var: python_version
+    msg: "Python Version(variable): {{ python_version }} | Python version(active): {{ python_version_result.stdout }}"
