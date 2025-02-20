@@ -1,4 +1,7 @@
 ---
+  ########################
+  #### Python status #####
+  ########################
   - name: Check Python version | if version lower than 3.5 do nothing and let me know it.
     command: python3 --version
     register: python_version_result

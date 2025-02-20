@@ -1,4 +1,7 @@
 ---
+  ########################
+  ### Check container ####
+  ########################
 - name: Check Docker version
   command: docker --version
   register: dockerVersion
@@ -10,32 +13,45 @@
 - name: Get info for Docker container
   docker_container_info:
     name: "{{ CONTAINER_NAME }}"
-  register: result
+  register: isContainer
 
 - name: Does container exist?
   debug:
-    msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
+    msg: "The container {{ 'exists' if isContainer.exists else 'does not exist' }}"
 
-  # Container exist
+  ########################
+  ### Container exist ####
+  ########################
 - name: Stop the container if it exists
   docker_container:
     name: "{{ CONTAINER_NAME }}"
     state: stopped
-  when: result.exists
+  when: isContainer.exists
 
 - name: Remove the container if it exists
   docker_container:
     name: "{{ CONTAINER_NAME }}"
     state: absent
-  when: result.exists
+  when: isContainer.exists
 
 - name: Remove the container image after the container is stopped
   docker_image:
     name: "{{ IMAGE_NAME }}"
     state: absent
-  when: result.exists
+  when: isContainer.exists
 
-  # Container not exist
+- name: Pull and run the container if it exists
+  docker_container:
+    name: "{{ CONTAINER_NAME }}"
+    image: "{{ IMAGE_NAME }}"
+    ports:
+      - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
+    state: started
+  when: isContainer.exists
+
+  ########################
+  # Container not exist ##
+  ########################
 - name: Pull and run the container if it does not exist
   docker_container:
     name: "{{ CONTAINER_NAME }}"
@@ -43,9 +59,11 @@
     ports:
       - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
     state: started
-  when: not result.exists
+  when: not isContainer.exists
 
+  ########################
+  ### Container status ###
+  ########################
 - name: Print the status of the container
   debug:
-    msg: "The container status is {{ result.container['State']['Status'] }}"
-  when: result.exists
+    msg: "The container status is {{ isContainer.container['State']['Status'] }}"
