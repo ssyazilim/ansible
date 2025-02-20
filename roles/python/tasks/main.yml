@@ -2,11 +2,11 @@
   - name: Check Python version | if version lower than 3.5 do nothing and let me know it.
     command: python3 --version
     register: python_version_result
-    failed_when: python_version_result.stdout | regex_replace('Python ', '') is version(python_version, '<')
+    failed_when: python_version_result.stdout | regex_replace('Python ', '') is version(PYTHON_VERSION, '<')
 
   - name: Compare Python versions
     debug:
-      msg: "{{ python_version_result.stdout }} < {{ python_version }} | false | Everything is OK"
+      msg: "{{ python_version_result.stdout }} < {{ PYTHON_VERSION }} | false | Everything is OK"
 
   - name: Install python3-requests
     apt:
