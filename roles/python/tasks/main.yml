@@ -13,4 +13,4 @@
       name: python3-requests
       state: present
       update_cache: yes
-      when: ansible_hostname == 'pardus'
+    when: ansible_hostname == 'pardus'
