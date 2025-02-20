@@ -23,4 +23,3 @@
   - name: Install requests using pip
     raw: |
         pip install requests
-    changed_when: false
