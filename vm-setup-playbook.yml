@@ -3,5 +3,4 @@
   hosts: pardus
   remote_user: root
   roles:
-    - python
     - dummy
