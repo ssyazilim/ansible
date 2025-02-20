@@ -16,12 +16,26 @@
   debug:
     msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
 
+  # Container exist
 - name: Stop the container if it exists
   docker_container:
     name: "{{ CONTAINER_NAME }}"
     state: stopped
   when: result.exists
 
+- name: Remove the container if it exists
+  docker_container:
+    name: "{{ CONTAINER_NAME }}"
+    state: absent
+  when: container_info.exists
+
+- name: Remove the container image after the container is stopped
+  docker_image:
+    name: "{{ IMAGE_NAME }}"
+    state: absent
+  when: result.exists
+
+  # Container not exist
 - name: Pull and run the container if it does not exist
   docker_container:
     name: "{{ CONTAINER_NAME }}"
