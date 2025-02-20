@@ -1,8 +1,18 @@
+---
+- name: Check if Python is already latest
+  command: python3 --version
+  register: python_version_result
+  failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+
+- name: Print Python version
+  debug:
+    msg: "Python Version: {{ python_version_result.stdout }}"
+
 - name: Check Docker version
   command: docker --version
   register: dockerVersion
 
-- name: Print version
+- name: Print Docker version
   debug:
     msg: "Docker Version: {{ dockerVersion.stdout }}"
 
