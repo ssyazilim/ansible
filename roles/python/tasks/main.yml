@@ -6,10 +6,11 @@
 
   - name: Compare Python versions
     debug:
-      msg: "{{ python_version_result.stdout }} < {{ python_version }} | false"
+      msg: "{{ python_version_result.stdout }} < {{ python_version }} | false | Everything is OK"
 
   - name: Install python3-requests
     apt:
       name: python3-requests
       state: present
       update_cache: yes
+      when: ansible_hostname == 'pardus'
