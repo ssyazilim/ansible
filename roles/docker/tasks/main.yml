@@ -26,6 +26,8 @@
   docker_container:
     name: "{{ CONTAINER_NAME }}"
     image: "{{ IMAGE_NAME }}"
+    ports:
+      - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
     state: started
   when: not result.exists
 
