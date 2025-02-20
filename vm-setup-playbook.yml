@@ -1,6 +1,6 @@
 ---
 - name: Ansible playbook
-  hosts: ubuntu
+  hosts: pardus_server
   remote_user: root
   roles:
     - dummy

@@ -1,5 +1,5 @@
 [ubuntu]
-764f79c5-81f3-4791-ad78-c6381db4afc6 ansible_host=194.31.52.175 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/remote-key
+ubuntu_server ansible_host=194.31.52.175 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/remote-key
 
 [pardus]
-4d142080-1ddc-11b2-8000-e8f9d6562a9c ansible_host=192.168.1.16 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/remote-key
+pardus_server ansible_host=192.168.1.16 ansible_user=root ansible_ssh_private_key_file=/var/jenkins_home/ansible-jenkins/remote-key
