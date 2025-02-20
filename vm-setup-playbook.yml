@@ -5,3 +5,6 @@
   roles:
     - python
     - docker
+
+  vars_files:
+    - ./roles/python/vars/main.yml
