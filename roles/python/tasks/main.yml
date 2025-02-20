@@ -1,9 +1,9 @@
 ---
-  - name: Check if Python is already latest
+  - name: Check Python is specific version I need
     command: python3 --version
     register: python_version_result
     failed_when: python_version_result.stdout | regex_replace('Python ', '') is version(python_version, '<')
 
-  - name: Print Python version
+  - name: Check Python versions
     debug:
-      msg: "Python Version(variable): {{ python_version }} | Python version(active): {{ python_version_result.stdout }}"
+      msg: "{{ python_version_result.stdout }} < {{ python_version }} | activePythonVersion < myPythonVersion"
