@@ -1,6 +1,6 @@
 ---
 - name: Ansible playbook
-  hosts: 192.168.1.16
+  hosts: ubuntu
   remote_user: root
   roles:
     - dummy
