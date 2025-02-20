@@ -2,7 +2,7 @@
   - name: Check if Python is already latest
     command: python3 --version
     register: python_version_result
-    failed_when: "{{ python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '>=') }}"
+    failed_when: "python_version_result.stdout | replace('Python ', '') | version_compare(python_version, '<')"
 
   - name: Print Python version
     debug:
