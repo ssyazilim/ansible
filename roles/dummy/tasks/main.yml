@@ -11,12 +11,6 @@
   debug:
     msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
 
-- name: Stop the container if it exists
-  docker_container:
-    name: "{{ CONTAINER_NAME }}"
-    state: stopped
-  when: result.exists
-
 - name: Print the status of the container
   debug:
     msg: "The container status is {{ result.container['State']['Status'] }}"
