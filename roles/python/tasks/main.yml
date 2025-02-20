@@ -6,4 +6,4 @@
 
   - name: Print Python version
     debug:
-    msg: "Python Version(variable): {{ python_version }} | Python version(active): {{ python_version_result.stdout }}"
+      msg: "Python Version(variable): {{ python_version }} | Python version(active): {{ python_version_result.stdout }}"
