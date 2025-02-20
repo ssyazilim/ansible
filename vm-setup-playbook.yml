@@ -1,6 +1,6 @@
 ---
 - name: Ansible playbook
-  hosts: 4d142080-1ddc-11b2-8000-e8f9d6562a9c
+  hosts: 192.168.1.16
   remote_user: root
   roles:
     - dummy
