@@ -7,7 +7,7 @@
   debug:
     msg: "Docker Version: {{ dockerVersion.stdout }}"
 
-- name: Get info for container
+- name: Get info for Docker container
   docker_container_info:
     name: "{{ CONTAINER_NAME }}"
   register: result
@@ -15,6 +15,19 @@
 - name: Does container exist?
   debug:
     msg: "The container {{ 'exists' if result.exists else 'does not exist' }}"
+
+- name: Stop the container if it exists
+  docker_container:
+    name: "{{ CONTAINER_NAME }}"
+    state: stopped
+  when: result.exists
+
+- name: Pull and run the container if it does not exist
+  docker_container:
+    name: "{{ CONTAINER_NAME }}"
+    image: "{{ IMAGE_NAME }}"
+    state: started
+  when: not result.exists
 
 - name: Print the status of the container
   debug:
