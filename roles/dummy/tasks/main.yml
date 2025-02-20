@@ -1,8 +1,3 @@
----
-- name: Check Docker version
-  command: docker --version
-  register: dockerVersion
-
 - name: Print version
   debug:
     msg: "Docker Version: {{ dockerVersion.stdout }}"
