@@ -49,6 +49,11 @@
     state: started
   when: isContainer.exists
 
+- name: Print the status of the container
+  debug:
+    msg: "The container status is {{ isContainer.container['State']['Status'] }}"
+  when: isContainer.exists
+
   ########################
   # Container not exist ##
   ########################
@@ -60,10 +65,3 @@
       - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
     state: started
   when: not isContainer.exists
-
-  ########################
-  ### Container status ###
-  ########################
-- name: Print the status of the container
-  debug:
-    msg: "The container status is {{ isContainer.container['State']['Status'] }}"
