@@ -8,13 +8,9 @@
     debug:
       msg: "{{ python_version_result.stdout }} < {{ python_version }} | activePythonVersion < myPythonVersionVariable"
 
-  - name: Reinstall Python again for pardus machine
-    hosts: pardus
-    become: yes
-    tasks:
-      - name: Update the apt cache
-        apt:
-          update_cache: yes
+  - name: Update apt cache
+    apt:
+      update_cache: yes
 
-      - name: Reinstall Python 3.11, venv and dev packages
-        command: apt-get install --reinstall -y python3.11 python3.11-venv python3.11-dev
+  - name: Reinstall Python 3.11, venv and dev packages
+    command: apt-get install --reinstall -y python3.11 python3.11-venv python3.11-dev
