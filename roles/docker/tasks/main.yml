@@ -27,7 +27,7 @@
   docker_container:
     name: "{{ CONTAINER_NAME }}"
     state: absent
-  when: container_info.exists
+  when: result.exists
 
 - name: Remove the container image after the container is stopped
   docker_image:
