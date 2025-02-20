@@ -1,4 +1,2 @@
 ---
-# Default latest Python version
-# Has to be in form d.d as exists in deadsnakes ppa
 python_version: 3.5

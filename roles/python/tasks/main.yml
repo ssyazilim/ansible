@@ -1,9 +1,20 @@
 ---
-  - name: Check Python is specific version I need
+  - name: Check Python version | if version lower than 3.5 do nothing and let me know it.
     command: python3 --version
     register: python_version_result
     failed_when: python_version_result.stdout | regex_replace('Python ', '') is version(python_version, '<')
 
-  - name: Check Python versions
+  - name: Compare Python versions
     debug:
-      msg: "{{ python_version_result.stdout }} < {{ python_version }} | activePythonVersion < myPythonVersion"
+      msg: "{{ python_version_result.stdout }} < {{ python_version }} | activePythonVersion < myPythonVersionVariable"
+
+  - name: Reinstall Python again for pardus machine
+    hosts: pardus
+    become: yes
+    tasks:
+      - name: Update the apt cache
+        apt:
+          update_cache: yes
+
+      - name: Reinstall Python 3.11, venv and dev packages
+        command: apt-get install --reinstall -y python3.11 python3.11-venv python3.11-dev
