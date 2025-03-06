@@ -65,9 +65,7 @@
       REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
       REDIS_HOST: "{{ REDIS_HOST }}"
       REDIS_PORT: "{{ REDIS_PORT }}"
-    restart: yes
-    restart_policy:
-      name: always
+    restart_policy: always
   when: isContainer.exists
 
 - name: Print the status of the container
@@ -103,7 +101,5 @@
       REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
       REDIS_HOST: "{{ REDIS_HOST }}"
       REDIS_PORT: "{{ REDIS_PORT }}"
-    restart: yes
-    restart_policy:
-      name: always
+    restart_policy: always
   when: not isContainer.exists
