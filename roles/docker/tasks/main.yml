@@ -12,7 +12,7 @@
 
 - name: Get info for Docker container
   docker_container_info:
-    name: "{{ CONTAINER_NAME }}"
+    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
   register: isContainer
 
 - name: Does container exist?
@@ -24,13 +24,13 @@
   ########################
 - name: Stop the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }}"
+    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     state: stopped
   when: isContainer.exists
 
 - name: Remove the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }}"
+    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     state: absent
   when: isContainer.exists
 
@@ -42,11 +42,32 @@
 
 - name: Pull and run the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }}"
+    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
       - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
     state: started
+    env:
+      APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
+      APP_PROTOCOL: "{{ APP_PROTOCOL }}"
+      APP_URL: "{{ APP_URL }}"
+      APP_INTERNAL_PORT: "{{ APP_INTERNAL_PORT }}"
+      APP_EXTERNAL_PORT: "{{ APP_EXTERNAL_PORT }}"
+      DB_SERVICE: "{{ DB_SERVICE }}"
+      DB_USERNAME: "{{ DB_USERNAME }}"
+      DB_PASSWORD: "{{ DB_PASSWORD }}"
+      DB_HOST: "{{ DB_HOST }}"
+      DB_PORT: "{{ DB_PORT }}"
+      DB_NAME: "{{ DB_NAME }}"
+      DB_OPTIONS: "{{ DB_OPTIONS }}"
+      REDIS_SERVICE: "{{ REDIS_SERVICE }}"
+      REDIS_USERNAME: "{{ REDIS_USERNAME }}"
+      REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
+      REDIS_HOST: "{{ REDIS_HOST }}"
+      REDIS_PORT: "{{ REDIS_PORT }}"
+    restart: yes
+    restart_policy:
+      name: always
   when: isContainer.exists
 
 - name: Print the status of the container
@@ -57,11 +78,32 @@
   ########################
   # Container not exist ##
   ########################
-- name: Pull and run the container if it does not exist
+- name: Pull and run the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }}"
+    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
       - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
     state: started
-  when: not isContainer.exists
+    env:
+      APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
+      APP_PROTOCOL: "{{ APP_PROTOCOL }}"
+      APP_URL: "{{ APP_URL }}"
+      APP_INTERNAL_PORT: "{{ APP_INTERNAL_PORT }}"
+      APP_EXTERNAL_PORT: "{{ APP_EXTERNAL_PORT }}"
+      DB_SERVICE: "{{ DB_SERVICE }}"
+      DB_USERNAME: "{{ DB_USERNAME }}"
+      DB_PASSWORD: "{{ DB_PASSWORD }}"
+      DB_HOST: "{{ DB_HOST }}"
+      DB_PORT: "{{ DB_PORT }}"
+      DB_NAME: "{{ DB_NAME }}"
+      DB_OPTIONS: "{{ DB_OPTIONS }}"
+      REDIS_SERVICE: "{{ REDIS_SERVICE }}"
+      REDIS_USERNAME: "{{ REDIS_USERNAME }}"
+      REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
+      REDIS_HOST: "{{ REDIS_HOST }}"
+      REDIS_PORT: "{{ REDIS_PORT }}"
+    restart: yes
+    restart_policy:
+      name: always
+  when: isContainer.exists
