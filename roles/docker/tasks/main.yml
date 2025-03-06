@@ -12,7 +12,7 @@
 
 - name: Get info for Docker container
   docker_container_info:
-    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
+    name: "{{ CONTAINER_NAME }}-{{ APP_PROJECT_NAME }}"
   register: isContainer
 
 - name: Does container exist?
