@@ -106,4 +106,4 @@
     restart: yes
     restart_policy:
       name: always
-  when: !isContainer.exists
+  when: not isContainer.exists
