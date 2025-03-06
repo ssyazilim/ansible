@@ -45,7 +45,7 @@
     name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
-      - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
+      - "{{ APP_EXTERNAL_PORT }}:{{ APP_INTERNAL_PORT }}"
     state: started
     env:
       APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
@@ -83,7 +83,7 @@
     name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
-      - "{{ EXTERNAL_PORT }}:{{ INTERNAL_PORT }}"
+      - "{{ APP_EXTERNAL_PORT }}:{{ APP_INTERNAL_PORT }}"
     state: started
     env:
       APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
