@@ -78,7 +78,7 @@
   ########################
   # Container not exist ##
   ########################
-- name: Pull and run the container if it exists
+- name: Pull and run the container if it is not exists
   docker_container:
     name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
@@ -106,4 +106,4 @@
     restart: yes
     restart_policy:
       name: always
-  when: isContainer.exists
+  when: !isContainer.exists
