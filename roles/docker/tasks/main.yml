@@ -66,6 +66,7 @@
       REDIS_HOST: "{{ REDIS_HOST }}"
       REDIS_PORT: "{{ REDIS_PORT }}"
     restart_policy: always
+    command: ["npm", "run", "start"]
   when: isContainer.exists
 
 - name: Print the status of the container
@@ -102,4 +103,5 @@
       REDIS_HOST: "{{ REDIS_HOST }}"
       REDIS_PORT: "{{ REDIS_PORT }}"
     restart_policy: always
+    command: ["npm", "run", "start"]
   when: not isContainer.exists
