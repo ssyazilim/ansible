@@ -49,22 +49,10 @@
     state: started
     env:
       APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
-      APP_PROTOCOL: "{{ APP_PROTOCOL }}"
-      APP_URL: "{{ APP_URL }}"
       APP_INTERNAL_PORT: "{{ APP_INTERNAL_PORT }}"
       APP_EXTERNAL_PORT: "{{ APP_EXTERNAL_PORT }}"
-      DB_SERVICE: "{{ DB_SERVICE }}"
-      DB_USERNAME: "{{ DB_USERNAME }}"
-      DB_PASSWORD: "{{ DB_PASSWORD }}"
-      DB_HOST: "{{ DB_HOST }}"
-      DB_PORT: "{{ DB_PORT }}"
-      DB_NAME: "{{ DB_NAME }}"
-      DB_OPTIONS: "{{ DB_OPTIONS }}"
-      REDIS_SERVICE: "{{ REDIS_SERVICE }}"
-      REDIS_USERNAME: "{{ REDIS_USERNAME }}"
-      REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
-      REDIS_HOST: "{{ REDIS_HOST }}"
-      REDIS_PORT: "{{ REDIS_PORT }}"
+      CONNECT_DB: "{{ CONNECT_DB }}"
+      CONNECT_REDIS: "{{ CONNECT_REDIS }}"
     restart_policy: always
     command: ["npm", "run", "start"]
   when: isContainer.exists
@@ -86,22 +74,10 @@
     state: started
     env:
       APP_PROJECT_NAME: "{{ APP_PROJECT_NAME }}"
-      APP_PROTOCOL: "{{ APP_PROTOCOL }}"
-      APP_URL: "{{ APP_URL }}"
       APP_INTERNAL_PORT: "{{ APP_INTERNAL_PORT }}"
       APP_EXTERNAL_PORT: "{{ APP_EXTERNAL_PORT }}"
-      DB_SERVICE: "{{ DB_SERVICE }}"
-      DB_USERNAME: "{{ DB_USERNAME }}"
-      DB_PASSWORD: "{{ DB_PASSWORD }}"
-      DB_HOST: "{{ DB_HOST }}"
-      DB_PORT: "{{ DB_PORT }}"
-      DB_NAME: "{{ DB_NAME }}"
-      DB_OPTIONS: "{{ DB_OPTIONS }}"
-      REDIS_SERVICE: "{{ REDIS_SERVICE }}"
-      REDIS_USERNAME: "{{ REDIS_USERNAME }}"
-      REDIS_PASSWORD: "{{ REDIS_PASSWORD }}"
-      REDIS_HOST: "{{ REDIS_HOST }}"
-      REDIS_PORT: "{{ REDIS_PORT }}"
+      CONNECT_DB: "{{ CONNECT_DB }}"
+      CONNECT_REDIS: "{{ CONNECT_REDIS }}"
     restart_policy: always
     command: ["npm", "run", "start"]
   when: not isContainer.exists
