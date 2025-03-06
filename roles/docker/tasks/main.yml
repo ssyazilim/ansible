@@ -24,13 +24,13 @@
   ########################
 - name: Stop the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
+    name: "{{ CONTAINER_NAME }}-{{ APP_PROJECT_NAME }}"
     state: stopped
   when: isContainer.exists
 
 - name: Remove the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
+    name: "{{ CONTAINER_NAME }}-{{ APP_PROJECT_NAME }}"
     state: absent
   when: isContainer.exists
 
@@ -42,7 +42,7 @@
 
 - name: Pull and run the container if it exists
   docker_container:
-    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
+    name: "{{ CONTAINER_NAME }}-{{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
       - "{{ APP_EXTERNAL_PORT }}:{{ APP_INTERNAL_PORT }}"
@@ -78,7 +78,7 @@
   ########################
 - name: Pull and run the container if it is not exists
   docker_container:
-    name: "{{ CONTAINER_NAME }} - {{ APP_PROJECT_NAME }}"
+    name: "{{ CONTAINER_NAME }}-{{ APP_PROJECT_NAME }}"
     image: "{{ IMAGE_NAME }}"
     ports:
       - "{{ APP_EXTERNAL_PORT }}:{{ APP_INTERNAL_PORT }}"
